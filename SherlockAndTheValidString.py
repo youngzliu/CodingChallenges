@@ -9,19 +9,23 @@ import sys
 # Complete the isValid function below.
 def isValid(s):
     countDict = {}
-    difference = 0
     for char in s:
         if char in countDict:
             countDict[char] += 1
         else:
             countDict[char] = 1
     countList = list(countDict.values())
-    base = countList[0]
-    for i in range(1, len(countList)):
-        difference += abs(base - countList[i])
-        if(difference > 1):
-            return "NO"
-    return "YES"
+    countList.sort()
+    if (countList[0] == countList[len(countList)-1]):
+        return "YES"
+    elif(countList[0] == 1 and countList[1] == countList[len(countList)-1]):
+        return "YES"
+    elif(countList[0] == countList[len(countList) - 2] and countList[len(countList) - 2] + 1 == countList[len(countList) - 1]):
+        return "YES"
+    else:
+        return "NO"
+    
+    
 
 
 
@@ -36,3 +40,4 @@ if __name__ == '__main__':
     fptr.write(result + '\n')
 
     fptr.close()
+
