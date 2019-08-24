@@ -74,8 +74,8 @@ class Solution {
             return null;
         }
         SinglyLinkedListNode current = head;
-        while(current.next != null){
-            while(current.next != null && current.next.data == current.data){
+        while(current != null && current.next != null){
+            while((current.next != null) && (current.next.data == current.data)){
                 current.next = current.next.next;
             }
             current = current.next;
